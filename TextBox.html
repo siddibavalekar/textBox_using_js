@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Text Box</title>
+	
+	<link rel="stylesheet" type="text/css" href="textbox.css">
+</head>
+<body align="center">
+	<div class="container">
+		<h2 class="heading">Text Box</h2><br><br>
+		<form class="textbox-form">
+			<label>Enter the text in the below textbox</label><br><br>
+			<textarea id="txt" onkeytype="updateInfo()" cols="60px" rows="7px" autofocus></textarea>
+			<br><br>
+			<button type="button" onclick="transformToUpperCase()">UPPERCASE</button>
+			<button type="button" onclick="transformToLowerCase()">LOWERCASE</button>
+			<button type="button" onclick="changeColor()">CHANGE TEXT COLOR</button>
+			<button type="button" onclick="underLineTheText()">UNDERLINE</button>
+			<button type="button" onclick="findText()">Find</button>
+			<br><br>
+			<h3 id="textInfo">This text contains 0 words and 0 characters</h3>
+		</form>
+	</div>
+
+
+<script type="text/javascript">
+	
+	let text = document.getElementById("txt");
+	let textInfo = document.getElementById("textInfo");
+	let colour;
+
+	function updateInfo(){
+		let numberOfWords = text.value.trim().split(" ").length;
+		textInfo.innerHTML = `This Text contains ${numberOfWords} words and ${text.value.length} characters`;
+	}
+
+	function transformToUpperCase(){
+		text.value = text.value.toUpperCase();
+	}
+
+	function transformToLowerCase(){
+		text.value = text.value.toLowerCase();
+	}
+
+	function changeColor(){
+		colour = prompt(("Enter your favorite color: ").toLowerCase());
+		text.style.color=colour;
+	}
+
+	function underLineTheText(){
+		text.style.textDecoration = `underline 2px solid ${colour}`;
+	}
+
+	function findText(){
+		let searchText = prompt("Enter the text:");
+		if(text.value.includes(searchText)){
+			alert(`Search text "${searchText}" is present`);
+		}
+		else{
+			alert(`Search text "${searchText}" is not present`);
+		}
+	}
+</script>  
+
+
+
+
+</body>
+</html>
